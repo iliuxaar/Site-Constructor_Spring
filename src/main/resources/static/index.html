@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta tags !-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/blog.css" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+    <script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/summernote.js"></script>
+    <script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="/webjars/angular-translate/2.11.0/angular-translate.min.js"></script>
+    <script type="text/javascript" src="/webjars/angular-translate-loader-static-files/2.6.1/angular-translate-loader-static-files.js"></script>
+    <script type="text/javascript" src="webjars/angular-route/1.5.8/angular-route.js"></script>
+    <script type="text/javascript" src="webjars/angular-sanitize/1.5.8/angular-sanitize.js"></script>
+    <script type="text/javascript" src="webjars/angular-smart-table/2.1.8/dist/smart-table.min.js"></script>
+    <script type="text/javascript" src="webjars/angular-summernote/0.8.1/dist/angular-summernote.js"></script>
+
+    <script src='js/app.module.js'></script>
+    <script src='js/app.config.js'></script>
+    <script src='js/app.controller.js'></script>
+    <script src='js/modules/main.module.js'></script>
+    <script src='js/modules/user.module.js'></script>
+    <script src='js/modules/create.module.js'></script>
+    <script src='js/modules/site.module.js'></script>
+    <script src='js/modules/page.module.js'></script>
+    <script src='js/modules/pageupdate.module.js'></script>
+    <script src='js/modules/show.module.js'></script>
+    <style>
+        body { padding-top: 70px; }
+    </style>
+</head>
+<body ng-app="app" ng-controller="home as home">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/" translate="SITE_CONSTRUCTOR"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <!--li class="active"><a href="#/">Home</a></li-->
+                <li><a href="#/userpage" ng-show="authenticated"  translate>YOUR_SITES</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" >
+                <li class="dropdown" ng-show="!authenticated" >
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" translate>LOGIN<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <form action="/signin/facebook" method="post">
+                                <button  class="btn btn-block btn-social btn-facebook" type="submit"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/signin/twitter" method="post">
+                                <button  class="btn btn-block btn-social btn-twitter" type="submit"><i class="fa fa-twitter"></i>Sign in with Twitter</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown" ng-show="authenticated" >
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span ng-bind="user"></span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/userpage" translate>YOUR_SITES</a> </li>
+                        <li><a ng-click="logout()" translate>LOGOUT</a></li>
+                    </ul>
+                </li>
+                <button  ng-click="changeLanguage('eng')" >eng</button>
+                <button  ng-click="changeLanguage('rus')" >rus</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div ng-view></div>
+
+</body>
+</html>

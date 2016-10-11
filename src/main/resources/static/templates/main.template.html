@@ -1,0 +1,26 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 translate>HEAD_MAIN</h1>
+        <p translate>MAIN_TEXT</p>
+        <p translate>MAIN_LIST_TEXT</p>
+        <table st-table="info" st-safe-src="site" class="table table-striped">
+            <thead>
+            <tr>
+                <th st-sort="id">Id</th>
+                <th st-sort="siteName" translate>LIST_HEAD_SITE</th>
+                <th st-sort="user.name" translate>LIST_HEAD_USER</th>
+            </tr>
+            <tr>
+                <th colspan="5"><input st-search="" class="form-control" placeholder="Search ..." type="text"/></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in info">
+                <td>{{ item.id }}</td>
+                <td> <a href="#/show/site/{{ item.id }}">{{ item.siteName }}</a> </td>
+                <td>{{ item.user.name }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

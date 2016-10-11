@@ -1,0 +1,32 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 translate="HELLO"> {{site[0].user.name}}</h1>
+        <p translate>USER_TEXT</p>
+        <a class="btn btn-primary btn-lg" href="#/create/site/" translate> ADD_SITE</a>
+        <table st-table="info" st-safe-src="site" class="table table-striped">
+            <thead>
+            <tr>
+                <th st-sort="item.id">Id</th>
+                <th st-sort="item.siteName" translate>LIST_HEAD_SITE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in info">
+                <td>{{ item.id }}</td>
+                <td>{{ item.siteName }}</td>
+                <td>
+                    <a href="#/edit/site/{{ item.id }}" class="btn btn-sm btn-warning" translate>
+                        EDIT
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="removeItem(item)">
+                        <i class="glyphicon glyphicon-remove-circle">
+                        </i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

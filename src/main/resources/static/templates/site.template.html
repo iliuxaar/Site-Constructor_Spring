@@ -1,0 +1,30 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 translate="YOUR_SITE">{{ name }} {{ id }}</h1>
+        <p translate>PAGES</p>
+        <a class="btn btn-primary btn-lg" href="#/add/page/site/{{id}}" translate>ADD_NEW_PAGE</a>
+        <table st-table="info" st-safe-src="pages" class="table table-striped">
+            <thead>
+            <tr>
+                <th st-sort="item.pageName" translate>PAGE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in info">
+                <td>{{ item.pageName }}</td>
+                <td>
+                    <a href="#/edit/page/{{item.id}}"class="btn btn-sm btn-warning" translate>
+                        EDIT
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="removeItem(item)">
+                        <i class="glyphicon glyphicon-remove-circle">
+                        </i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
